@@ -1,0 +1,17 @@
+version: '3.5'
+services:
+  sftp:
+      container_name: sftp-keley
+      image: atmoz/sftp
+      volumes:
+          - ./upload:/home/KELEY
+          - ./config/users.conf:/etc/sftp/users.conf:ro
+      ports:
+          - "22:22"
+      networks: 
+        - default
+networks:
+  default:
+    driver: bridge
+    name: dacia
+    external: true
